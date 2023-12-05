@@ -72,7 +72,7 @@ total_revenue_2024 = round(df['Fractional Revenue'].sum() + df['Marketplace Reve
 ending_active_accounts = round(df.loc[df.index[-1], 'Active Accounts'])
 ending_cash_balance = round(df.loc[df.index[-1], 'Cash Balance'])
 
-kpi_data = {'2024 KPIs': ['Total Revenue', 'Active Fractionals', 'Ending Cash Balance'], 'Value': [f"${total_revenue_2024:,}", ending_active_accounts, f"${ending_cash_balance:,}"]}
+kpi_data = {'2024 KPIs': ['Total Revenue', 'Active Fractionals', 'Ending Cash Balance'], 'Value': [f"${total_revenue_2024:,}", f"{ending_active_accounts}", f"${ending_cash_balance:,}"]}
 kpi_df = pd.DataFrame(kpi_data)
 st.dataframe(kpi_df, hide_index=True)
 
