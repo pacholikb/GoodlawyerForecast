@@ -47,7 +47,6 @@ for month in df.index:
     df.loc[month, 'Monthly Expenses'] = round(monthly_expenses)
     df.loc[month, 'Net Burn'] = round(df.loc[month, 'Net Revenue'] - monthly_expenses)
     df.loc[month, 'Cash Balance'] = round(cash_balance + df.loc[month, 'Net Revenue'] - monthly_expenses)
-    df.loc[month, 'Runway'] = 'Infinite' if df.loc[month, 'Net Burn'] >= 0 else round(df.loc[month, 'Cash Balance'] / (-1 * df.loc[month, 'Net Burn']))
     cash_balance = round(df.loc[month, 'Cash Balance'])
     current_monthly_gmv += round(current_monthly_gmv * (growth_rate / 100))
     if (int(month) % 3 == 0):  # Check if the month is a multiple of 3
@@ -72,7 +71,6 @@ with tabs[3]:
 total_revenue_2024 = round(df['Fractional Revenue'].sum() + df['Marketplace Revenue'].sum())
 ending_active_accounts = round(df.loc[df.index[-1], 'Active Accounts'])
 ending_cash_balance = round(df.loc[df.index[-1], 'Cash Balance'])
-runway_in_months = round(df.loc[df.index[-1], 'Runway'])
 
 kpi_data = {'2024 KPIs': ['Total Revenue', 'Active Fractionals', 'Ending Cash Balance', 'Runway in Months'], 'Value': [f"${total_revenue_2024:,}", ending_active_accounts, f"${ending_cash_balance:,}", runway_in_months]}
 kpi_df = pd.DataFrame(kpi_data)
