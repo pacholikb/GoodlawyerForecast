@@ -73,9 +73,8 @@ ending_active_accounts = round(df.loc[df.index[-1], 'Active Accounts'])
 ending_cash_balance = round(df.loc[df.index[-1], 'Cash Balance'])
 
 # Calculate runway_in_months
-runway_in_months = round(ending_cash_balance / monthly_expenses)
 
-kpi_data = {'2024 KPIs': ['Total Revenue', 'Active Fractionals', 'Ending Cash Balance', 'Runway in Months'], 'Value': [f"${total_revenue_2024:,}", ending_active_accounts, f"${ending_cash_balance:,}", runway_in_months]}
+kpi_data = {'2024 KPIs': ['Total Revenue', 'Active Fractionals', 'Ending Cash Balance', 'Runway in Months'], 'Value': [f"${total_revenue_2024:,}", ending_active_accounts, f"${ending_cash_balance:,}"]}
 kpi_df = pd.DataFrame(kpi_data)
 st.dataframe(kpi_df, hide_index=True)
 
